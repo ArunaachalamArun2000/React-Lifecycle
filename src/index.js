@@ -1,17 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class Lifecycle extends React.Component
+{
+  constructor()
+  {
+    super();
+    this.state={value:"Welcome"};
+  }
+  componentWillMount() 
+  {
+    alert("Hello");
+  }
+  render(){
+    return <div>
+      <h1>{this.state.value}</h1>
+      <button type="button" onClick={this.changevalue}> Submit </button>
+      <button type="button" onClick={this.deleteheadder}> Delete </button>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+      </div>
+  }
+  changevalue = ()=>
+  {
+    this.setState({value:"Thank you for submitting"});
+  }
+  deleteheadder =()=>
+  {
+    this.setState({value:false});
+  }
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({value:"Thank You"})},5000)  
+  }
+  componentWillUpdate(){
+    alert("Do you want to update");
+  }
+  //componentDidUpdate(){
+    //document.getElementById('mydiv').innerHTML="New Value Updated Succeffuly";
+  //}
+  //shouldComponentUpdate(){
+    //return false;
+  //}
+  componentWillUnmount(){
+    alert("Header Deleted");
+  }
+}
+ReactDOM.render(<Lifecycle/>,document.getElementById('root'));
+
+
