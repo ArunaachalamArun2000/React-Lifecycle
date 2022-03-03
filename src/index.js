@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './style.css';
 
 class Lifecycle extends React.Component
 {
@@ -14,7 +15,7 @@ class Lifecycle extends React.Component
   }
   render(){
     return <div>
-      <h1>{this.state.value}</h1>
+      <h1 className="App">{this.state.value}</h1>
       <button type="button" onClick={this.changevalue}> Submit </button>
       <button type="button" onClick={this.deleteheadder}> Delete </button>
 
